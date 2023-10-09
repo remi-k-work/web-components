@@ -1,0 +1,20 @@
+<style>
+  @import url("blog-entry.css");
+</style>
+<div>
+  <div>
+    <small>Title:</small>
+    <br />
+    <slot name="title"></slot>
+    <br />
+    <small>Author:</small>
+    <br />
+    <slot name="author"></slot>
+    <br />
+    <small>Date:</small>
+    <br />
+    <slot name="date"></slot>
+    <hr />
+    <slot name="content"></slot>
+  </div>
+</div>

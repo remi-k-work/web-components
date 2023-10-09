@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Simple template</title>
+    <link rel="stylesheet" href="index.css" />
+    <script type="module" src="main.js"></script>
+    <script type="module" src="time-formatted.js"></script>
+    <script type="module" src="hello-button.js"></script>
+    <script type="module" src="live-timer.js"></script>
+    <script type="module" src="show-hello.js"></script>
+    <script type="module" src="blog-list.js"></script>
+    <script type="module" src="blog-entry.js"></script>
+  </head>
+  <body>
+    <h1>My Flex-Box Practice</h1>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .wrapper-flex > div {
+        border-radius: 5px;
+        background: rgb(207, 232, 220);
+        padding: 1em;
+        flex: 1;
+      }
+
+      .wrapper-grid > div {
+        border-radius: 5px;
+        background: rgb(207, 232, 220);
+        padding: 1em;
+      }
+
+      .wrapper-flex {
+        display: flex;
+        min-height: 30vh;
+      }
+
+      .wrapper-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 100px 100px;
+        /* gap: 1em; */
+      }
+    </style>
+
+    <div class="wrapper-flex">
+      <div class="box1">One</div>
+      <div class="box2">Two</div>
+      <div class="box3">Three</div>
+    </div>
+    <br />
+    <div class="wrapper-grid">
+      <div class="box1">One</div>
+      <div class="box2">Two</div>
+      <div class="box3">Three</div>
+      <div class="box4">Four</div>
+      <div class="box5">Five</div>
+      <div class="box6">Six</div>
+    </div>
+
+    <h1>Simple template</h1>
+
+    <blog-list>
+      <blog-entry>
+        <span slot="title">10 Tips for Successful Remote Work</span>
+        <span slot="author">John Doe</span>
+        <span slot="date">2023-03-15</span>
+        <span slot="content">
+          In this blog post, we'll explore 10 essential tips to help you thrive in a remote work environment. From setting up a dedicated workspace to managing
+          your time effectively, we've got you covered.
+        </span>
+      </blog-entry>
+      <blog-entry>
+        <span slot="title">The Future of Artificial Intelligence</span>
+        <span slot="author">Jane Smith</span>
+        <span slot="date">2023-02-28</span>
+        <span slot="content">
+          Artificial Intelligence (AI) is rapidly advancing and reshaping various industries. In this article, we discuss the current state of AI and offer
+          insights into what the future may hold for this groundbreaking technology.
+        </span>
+      </blog-entry>
+      <blog-entry></blog-entry>
+    </blog-list>
+
+    <show-hello name="John"></show-hello>
+
+    <p>Testing CSS spill</p>
+
+    <my-paragraph>
+      <span slot="my-text">Let's have some different text!</span>
+    </my-paragraph>
+
+    <my-paragraph>
+      <ul slot="my-text">
+        <li>Let's have some different text!</li>
+        <li>In a list!</li>
+      </ul>
+    </my-paragraph>
+
+    <my-paragraph>
+      <div slot="my-text">
+        <div>Hello there from DIV!</div>
+        <span>Blah Blah Blah</span>
+        <b>Blah Blah Blah</b>
+      </div>
+    </my-paragraph>
+
+    <br />
+
+    <p>Testing CSS spill</p>
+
+    <time-formatted
+      datetime="2019-12-01"
+      year="numeric"
+      month="long"
+      day="numeric"
+      hour="numeric"
+      minute="numeric"
+      second="numeric"
+      time-zone-name="short"
+    ></time-formatted>
+
+    <div style="background: red">
+      <button is="hello-button">Click me</button>
+      Where are the buttons?
+      <button is="hello-button" disabled>Disabled</button>
+    </div>
+
+    <live-timer>
+      <time-formatted hour="numeric" minute="numeric" second="numeric"></time-formatted>
+      <my-paragraph>
+        <div slot="my-text">
+          <div>Hello I am nesting some custom web controls</div>
+        </div>
+      </my-paragraph>
+      <my-paragraph>
+        <span slot="my-text">Simulating like data being generated on the fly</span>
+      </my-paragraph>
+      <my-paragraph>
+        <span slot="my-text">Simulating like data being generated on the fly</span>
+      </my-paragraph>
+      <my-paragraph>
+        <span slot="my-text">Simulating like data being generated on the fly</span>
+      </my-paragraph>
+    </live-timer>
+
+    <my-paragraph>
+      <div slot="my-text">
+        Let us try to project another web component into this component's shadow DOM
+        <br />
+        <time-formatted
+          datetime="2019-12-01"
+          year="numeric"
+          month="long"
+          day="numeric"
+          hour="numeric"
+          minute="numeric"
+          second="numeric"
+          time-zone-name="short"
+        ></time-formatted>
+      </div>
+    </my-paragraph>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", (ev) => {
+        // const elemBlogList = document.querySelector("blog-list");
+        // elemBlogList.fetchTheTemplate();
+
+        // const elemBlogEntries = document.querySelectorAll("blog-entry");
+        // for (const elemBlogEntry of elemBlogEntries) {
+        //   elemBlogEntry
+        //     .fetchTheTemplate("blog-entry.html")
+        //     .then((hasFetched) => {
+        //       console.log(hasFetched);
+        //     })
+        //     .catch((error) => {
+        //       console.error(error);
+        //     });
+        // }
+
+        // const elemMyParagraphs = document.querySelectorAll("my-paragraph");
+        // for (const elemMyParagraph of elemMyParagraphs) {
+        //   elemMyParagraph
+        //     .fetchTheTemplate("comp-templ.html")
+        //     .then((hasFetched) => {
+        //       console.log(hasFetched);
+        //     })
+        //     .catch((error) => {
+        //       console.error(error);
+        //     });
+        // }
+
+        // Changing the attribute of a custom web component and causing it to re-render
+        // I am accessing the so-called light DOM in here
+        const elemTimeFormatted = document.querySelector("time-formatted");
+        setInterval(() => elemTimeFormatted.setAttribute("datetime", new Date()), 1000);
+
+        // Changing the attribute of a custom web component and causing it to re-render
+        // Same idea as above, but this time this web component is nested inside another web component
+        // I am accessing the so-called light DOM in here
+        const elemNestedTimeFormatted = document.querySelector("my-paragraph div time-formatted");
+        setInterval(() => elemNestedTimeFormatted.setAttribute("datetime", new Date()), 1000);
+      });
+    </script>
+  </body>
+</html>

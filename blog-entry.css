@@ -1,0 +1,9 @@
+div {
+  background: hsl(24, 100%, 50%);
+  margin: 0;
+  padding: 0;
+}
+
+div div {
+  padding: 1em;
+}
